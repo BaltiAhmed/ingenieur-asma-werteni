@@ -3,11 +3,13 @@ import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
 import Landing from "../screens/landing";
+import DetailDemandeDiagnostique from "../screens/detail-demande-diagostique";
 
 
 const LandingNav = createStackNavigator(
   {
     Landing: Landing,
+    DetailDemandeDiagnostique: DetailDemandeDiagnostique
   },
   {
     defaultNavigationOptions: {
