@@ -6,6 +6,7 @@ import {
   ScrollView,
   Image,
   RefreshControl,
+  Button,
 } from "react-native";
 import { Card, CardItem, Body } from "native-base";
 
@@ -23,7 +24,7 @@ const DetailDemandeDiagnostique = (props) => {
     wait(2000).then(() => setRefreshing(false));
     const sendRequest = async () => {
       const response = await fetch(
-        `http://192.168.1.10:5000/api/demande/${id}`
+        `http://192.168.42.17:5000/api/demande/${id}`
       );
 
       const responseData = await response.json();
@@ -40,7 +41,9 @@ const DetailDemandeDiagnostique = (props) => {
 
   useEffect(() => {
     const sendRequest = async () => {
-      const response = await fetch(`http://192.168.1.10:5000/api/demande/${id}`);
+      const response = await fetch(
+        `http://192.168.42.17:5000/api/demande/${id}`
+      );
 
       const responseData = await response.json();
       if (!response.ok) {
@@ -61,7 +64,7 @@ const DetailDemandeDiagnostique = (props) => {
         {list && (
           <View>
             <Image
-              source={{ uri: `http://192.168.1.10:5000/${list.image}` }}
+              source={{ uri: `http://192.168.42.17:5000/${list.image}` }}
               style={styles.image}
             />
             <View style={styles.details}>
@@ -75,13 +78,22 @@ const DetailDemandeDiagnostique = (props) => {
                 <Text>{list.blee}</Text>
                 <Text>{list.sympthome}</Text>
               </CardItem>
-              <CardItem>
-                
-              </CardItem>
+              <CardItem></CardItem>
               <CardItem footer>
                 <View style={styles.details}></View>
               </CardItem>
             </Card>
+            <Button
+              title="Envoyer un rapport"
+              onPress={() => {
+                props.navigation.navigate({
+                  routeName: "Rapport",
+                  params: {
+                    id: list._id,
+                  },
+                });
+              }}
+            />
           </View>
         )}
       </ScrollView>
