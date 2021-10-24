@@ -24,7 +24,7 @@ const DetailDemandeDiagnostique = (props) => {
     wait(2000).then(() => setRefreshing(false));
     const sendRequest = async () => {
       const response = await fetch(
-        `http://192.168.42.17:5000/api/demande/${id}`
+        `http://192.168.1.46:5000/api/demande/${id}`
       );
 
       const responseData = await response.json();
@@ -42,7 +42,7 @@ const DetailDemandeDiagnostique = (props) => {
   useEffect(() => {
     const sendRequest = async () => {
       const response = await fetch(
-        `http://192.168.42.17:5000/api/demande/${id}`
+        `http://192.168.1.46:5000/api/demande/${id}`
       );
 
       const responseData = await response.json();
@@ -64,7 +64,7 @@ const DetailDemandeDiagnostique = (props) => {
         {list && (
           <View>
             <Image
-              source={{ uri: `http://192.168.42.17:5000/${list.image}` }}
+              source={{ uri: `http://192.168.1.46:5000/${list.image}` }}
               style={styles.image}
             />
             <View style={styles.details}>

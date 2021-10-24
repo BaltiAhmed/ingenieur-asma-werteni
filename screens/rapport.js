@@ -28,7 +28,7 @@ const Rapport = (props) => {
 
   const id = props.navigation.getParam("id");
   const submit = async () => {
-    let response = await fetch("http://192.168.42.17:5000/api/reponce/ajout", {
+    let response = await fetch("http://192.168.1.46:5000/api/reponce/ajout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -62,7 +62,7 @@ const Rapport = (props) => {
 
   useEffect(() => {
     const sendRequest = async () => {
-      const response = await fetch(`http://192.168.42.17:5000/api/traitement`);
+      const response = await fetch(`http://192.168.1.46:5000/api/traitement`);
 
       const responseData = await response.json();
       if (!response.ok) {
